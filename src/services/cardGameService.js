@@ -68,7 +68,7 @@ class CardGameService {
 
     giveNewCardToPlayer(cardInd) {
         const drawnCard = this.cardList.pop();
-        const takenCard = this.players[this.activePlayerIndex].exchangeCard(cardInd, drawnCard);
+        const takenCard = this.players[this.activePlayerIndex].exchangeCard(cardInd, drawnCard)[0];
         this.discardedCardList.push(takenCard);
         return takenCard;
     }
@@ -99,10 +99,10 @@ class CardGameService {
     giveHint(player, info){
         if (player !== this.activePlayerIndex && this.hints > 0) {
             this.players[player].addCardInfo(info);
+            this.hints--;
+            this.activePlayerIndex++
+            this.activePlayerIndex = this.activePlayerIndex % this.players.length;
         }
-        this.hints--;
-        this.activePlayerIndex++
-        this.activePlayerIndex = this.activePlayerIndex % this.players.length;
     }
 }
 
