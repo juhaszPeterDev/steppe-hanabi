@@ -14,6 +14,7 @@ class CardGameService {
 
     loadGame() {
         this.cardList = [];
+        this.discardedCardList = [];
         const colorValues = ['red', 'yellow', 'blue', 'green', 'white'];
         const numberValues = [1, 1, 1, 2, 2, 3, 3, 4, 4, 5];
 

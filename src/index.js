@@ -20,7 +20,7 @@ const socketList = [];
 
 io.on('connection', (socket) => {
   socketList.push(socket);
-  console.log('user connected');
+  console.log('user connected '+(new Date()).toString());
   socket.on('new-message', (message) => {
     socketList.forEach(s => s.emit('new-message', message));
   });
